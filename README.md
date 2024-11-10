@@ -1,139 +1,157 @@
-# AI-agent
-AI agent that reads through a dataset (CSV or Google Sheets) and performs a web search to retrieve specific information for each entity in a chosen column.
+# AI Information Extractor
 
-AI Web Search & Data Extraction Agent
-An intelligent agent that automates web searches and information extraction based on user-defined queries, powered by LLMs and web search APIs.
-Features
+## Project Description
+The AI Information Extractor is a powerful Streamlit-based application that automates the process of gathering and analyzing information from web searches using AI. It combines web search capabilities with LLM processing to extract specific information about entities from search results.
 
-File Upload & Google Sheets Integration
+Key Features:
+- Import data from CSV files or Google Sheets
+- Automated web searching using SerpAPI
+- AI-powered information extraction using Groq's Mixtral model
+- Export results to CSV or Google Sheets
+- Real-time progress tracking
+- Detailed logging and error handling
 
-Upload CSV files or connect directly to Google Sheets
-Select target columns for data processing
-Preview uploaded data before processing
+## Setup Instructions
 
+### Prerequisites
+- Python 3.8 or higher
+- Google Cloud Platform account (for Google Sheets integration)
+- Groq API key
+- SerpAPI key
 
-Dynamic Query System
+### Installation
 
-Custom prompt templates with dynamic entity replacement
-Support for multiple field extraction in a single query
-User-friendly prompt interface
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/ai-information-extractor.git
+cd ai-information-extractor
+```
 
+2. Create and activate a virtual environment:
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows, use: venv\Scripts\activate
+```
 
-Automated Web Search
+3. Install required packages:
+```bash
+pip install -r requirements.txt
+```
 
-Intelligent web searching for each entity
-Rate-limiting and request management
-Multiple search API support (SerpAPI/ScraperAPI)
+### Requirements.txt
+```
+streamlit
+pandas
+requests
+groq
+google-auth
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
+```
 
+## Usage Guide
 
-LLM-Powered Data Extraction
+### Starting the Application
+Run the Streamlit application:
+```bash
+streamlit run app.py
+```
 
-Advanced information parsing using Groq/OpenAI
-Structured data extraction from web results
-Error handling and retry mechanisms
+### Google Sheets Setup
 
+1. Create a Google Cloud Project:
+   - Go to Google Cloud Console
+   - Create a new project
+   - Enable Google Sheets API
 
-Results Management
+2. Create Service Account Credentials:
+   - Go to "APIs & Services" > "Credentials"
+   - Create Service Account
+   - Download JSON credentials file
+   - Share your Google Sheet with the service account email
 
-Interactive results dashboard
-CSV export functionality
-Direct Google Sheets update option
+3. Using Google Sheets Integration:
+   - Upload credentials JSON file in the app
+   - Choose between importing from or exporting to Google Sheets
+   - For imports: Paste your Google Sheet URL
+   - For exports: Select Google Sheets as export option
 
-Prerequisites
+### Setting Up Search Queries
 
-Python 3.8+
-pip package manager
-API keys for:
+1. Data Preparation:
+   - Prepare your input data with entities you want to research
+   - Format can be CSV or Google Sheets
+   - Ensure your data has clear column headers
 
-Search API (SerpAPI/ScraperAPI)
-LLM API (Groq/OpenAI)
-Google Sheets API (optional)
+2. Configure Search:
+   - Select the column containing your target entities
+   - Create a search prompt template using {entity} placeholder
+   - Example: "Get the email address and website for {entity}"
 
-Installation
+3. Run Extraction:
+   - Click "Extract Information" to start the process
+   - Monitor progress in real-time
+   - View intermediate results as they're processed
 
-Clone the repository:
+## API Keys and Environment Variables
 
-bashCopygit clone https://github.com/yourusername/ai-agent-project.git
-cd ai-agent-project
+### Required API Keys:
+1. Groq API Key:
+   - Sign up at https://console.groq.com
+   - Replace `your_groq_api_key_here` in the code with your key
+   - Or set environment variable: `GROQ_API_KEY`
 
-Create and activate a virtual environment:
+2. SerpAPI Key:
+   - Sign up at https://serpapi.com
+   - Replace `your_serpapi_key_here` in the code with your key
+   - Or set environment variable: `SERPAPI_KEY`
 
-bashCopypython -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+### Environment Variables Setup:
+Create a `.env` file in the project root:
+```
+GROQ_API_KEY=your_groq_api_key_here
+SERPAPI_KEY=your_serpapi_key_here
+```
 
-Install dependencies:
+## Optional Features
 
-bashCopypip install -r requirements.txt
+### 1. Advanced Google Sheets Integration
+- Sheet selection dropdown
+- Custom range selection
+- Multiple sheet support
+- Automatic sheet creation for exports
 
-Set up environment variables:
+### 2. Progress Tracking
+- Real-time progress bar
+- Status updates for each entity
+- Intermediate results display
+- Detailed logging
 
-bashCopycp .env.example .env
-Edit .env file with your API keys:
-CopySEARCH_API_KEY=your_search_api_key
-LLM_API_KEY=your_llm_api_key
-GOOGLE_SHEETS_CREDENTIALS=path_to_credentials.json
-Running the Application
+### 3. Error Handling
+- Comprehensive error messages
+- Fallback options for failed operations
+- Debug mode for troubleshooting
 
-Start the application:
+### 4. Export Options
+- CSV download
+- Google Sheets export
+- Rich formatting in exported sheets
 
-bashCopystreamlit run app.py
+### 5. Rate Limiting
+- Built-in delays to prevent API throttling
+- Configurable delay settings
 
-Open your browser and navigate to http://localhost:8501
+## Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-Usage Guide
-1. Data Input
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-Click "Upload CSV" or enter Google Sheets URL
-Select the column containing entities to search for
-Preview your data to ensure correct loading
+## Support
+For support, please open an issue in the GitHub repository or contact [your contact information].
 
-2. Query Configuration
-
-Enter your search prompt template
-Use {entity} placeholder for dynamic replacement
-Example: "Find the email address and location of {entity}"
-
-3. Running Searches
-
-Click "Start Search" to begin the process
-Monitor progress in the dashboard
-View real-time results as they're processed
-
-4. Exporting Results
-
-Download results as CSV
-Update connected Google Sheet (if configured)
-View detailed extraction logs
-
-🛠️ Project Structure
-Copyai-agent-project/
-├── app.py                 # Main Streamlit application
-├── src/
-│   ├── search/           # Search API integration
-│   ├── llm/              # LLM processing logic
-│   ├── sheets/           # Google Sheets integration
-│   └── utils/            # Helper functions
-├── tests/                # Test suite
-├── requirements.txt      # Project dependencies
-└── README.md            # This file
-
-API Configuration
-Search API Setup
-
-Sign up for SerpAPI/ScraperAPI
-Get your API key
-
-LLM API Setup
-
-Create account on Groq
-Generate API key
-
-
-Google Sheets API Setup 
-
-Create project in Google Cloud Console
-Enable Google Sheets API
-Download credentials JSON
-Upload this on streamlit web application
-
-Watch the project demo: Loom Video Link
+## Acknowledgments
+- Groq for providing the LLM API
+- SerpAPI for search capabilities
+- Google Sheets API for data integration
