@@ -18,8 +18,8 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Direct API key initialization
-GROQ_API_KEY = "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"  # Replace with your Groq API key
-SERPAPI_KEY = "92dc51c176e99e618cf31b2850282eb82155a48418436ab3ab599c1225eae2a7"    # Replace with your SerpAPI key
+GROQ_API_KEY = ""  # Replace with your Groq API key
+SERPAPI_KEY = ""    # Replace with your SerpAPI key
 
 def validate_service_account_credentials(credentials_json: dict) -> bool:
     """Validate that the service account credentials JSON contains all required fields."""
