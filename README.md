@@ -142,3 +142,6 @@ SERPAPI_KEY=your_serpapi_key_here
 - Groq for providing the LLM API
 - SerpAPI for search capabilities
 - Google Sheets API for data integration
+
+## LOOM VIDEO LINK (FOR DEMONSTRATION)
+- https://www.loom.com/share/8b5b943c47304b1797947d75ea515df6?sid=43b7960c-14c7-4768-ad34-0c036e036a64
